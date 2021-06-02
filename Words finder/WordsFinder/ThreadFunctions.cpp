@@ -14,7 +14,7 @@ void MakeReport(string& report, string& temp_path, MyStruct* strct) {
 		+ "     Size: " + to_string(strct->size)
 		+ "     Attribute: " + strct->atribute
 		+ "     Amount not accept words: "
-		+ to_string(strct->notAcceptWords.size()) + "\n";
+		+ to_string(strct->words.size()) + "\n";
 	strct->file->Write("Report.txt", report);
 	wstring wreport(report.begin(), report.end());
 	SendMessage(*strct->window->GethList(), LB_ADDSTRING, 0, LPARAM(wreport.c_str()));
