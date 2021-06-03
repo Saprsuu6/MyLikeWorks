@@ -25,6 +25,18 @@ void ReadNotAllowWords(MyStruct* strct)
 	out.close();
 }
 
+void DetectFileType(MyStruct& strct, const string& path) {
+	if (strstr(path.c_str(), "*.*")) {
+		strct.fileType = "*.*";
+	}
+	else if (strstr(path.c_str(), "*.txt")) {
+		strct.fileType = "*.txt";
+	}
+	else {
+		throw NotAllowFile("Not allow types");
+	}
+}
+
 INT_PTR CALLBACK DialogProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	static bool stopBool = false;
@@ -54,10 +66,20 @@ INT_PTR CALLBACK DialogProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_COMMAND:
 		if (LOWORD(wParam) == IDC_START) {
 			strct->path = window->GetPath(hwnd);
-			window->DisAnStop(1);
-			window->DisAnPath(0);
-			strct->searching = CreateThread(0, 0, LPTHREAD_START_ROUTINE(Searching), strct, 0, 0);
-			strct->changing = CreateThread(0, 0, LPTHREAD_START_ROUTINE(Changing), strct, 0, 0);
+			try {
+				SetWindowText(*window->GethPath(), NULL);
+				DetectFileType(*strct, strct->path);
+				window->DisAnStop(1);
+				window->DisAnPath(0);
+				strct->searching = CreateThread(0, 0, LPTHREAD_START_ROUTINE(Searching), strct, 0, 0);
+				strct->changing = CreateThread(0, 0, LPTHREAD_START_ROUTINE(Changing), strct, 0, 0);
+			}
+			catch (const NotAllowFile& ex) {
+				string temp = ex.what();
+				wstring temp2(temp.begin(), temp.end());
+				MessageBox(hwnd, temp2.c_str(), L"", MB_OK);
+				SetWindowText(*window->GethPath(), NULL);
+			}
 		}
 		else if (LOWORD(wParam) == IDC_STOP && !stopBool) {
 			SuspendThread(strct->searching);

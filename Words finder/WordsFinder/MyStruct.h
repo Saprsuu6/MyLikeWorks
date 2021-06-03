@@ -11,6 +11,7 @@ struct MyStruct {
 	string atribute;
 	string fileName;
 	string repFileName;
+	string fileType;
 	vector<string> notAcceptWords;
 	vector<string> words;
 	WorkWithFile* file = nullptr;

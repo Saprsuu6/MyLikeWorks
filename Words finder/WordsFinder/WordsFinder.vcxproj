@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="NotAllowFile.h" />
     <ClInclude Include="Regular.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="ThreadFunctions.h" />

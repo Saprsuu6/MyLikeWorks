@@ -53,7 +53,9 @@ void ClientLogic::Logic(Windows& window, MyStruct& strct)
 		HANDLE Reporting = CreateThread(0, 0, Getting, (LPVOID)&strct, 0, 0);
 	}
 	catch (SocketException& ex) {
-		cout << ex.what() << endl;
+		string temp = ex.what();
+		wstring temp2(temp.begin(), temp.end());
+		MessageBox(*strct.window->GethDialog(), temp2.c_str(), NULL, MB_OK);
 		client.shutdown();
 	}
 }

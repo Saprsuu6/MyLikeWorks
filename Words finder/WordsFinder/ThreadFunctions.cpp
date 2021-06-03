@@ -15,6 +15,7 @@ void MakeReport(string& report, string& temp_path, MyStruct* strct) {
 		+ "     Attribute: " + strct->atribute
 		+ "     Amount not accept words: "
 		+ to_string(strct->words.size()) + "\n";
+	strct->words.clear();
 	strct->file->Write("Report.txt", report);
 	wstring wreport(report.begin(), report.end());
 	SendMessage(*strct->window->GethList(), LB_ADDSTRING, 0, LPARAM(wreport.c_str()));
@@ -22,6 +23,11 @@ void MakeReport(string& report, string& temp_path, MyStruct* strct) {
 
 void Searching(MyStruct* strct) {	
 	ResetEvent(strct->hEvent);
+
+	if (strct->fileType == "*.txt") {
+		strct->temp_path = strct->path;
+		strct->temp_path.replace(strct->temp_path.find("*.txt"), 5, "");
+	}
 
 	_finddata_t fileinfo;
 
@@ -36,8 +42,12 @@ void Searching(MyStruct* strct) {
 			string some_name = fileinfo.name;
 
 			if (some_name != "." && some_name != "..") {
-				strct->temp_path = strct->path;
-				strct->temp_path.replace(strct->temp_path.find("*.*"), 3, "");
+				strct->counter++;
+
+				if (strct->fileType != "*.txt") {
+					strct->temp_path = strct->path;
+					strct->temp_path.replace(strct->temp_path.find("*.*"), 3, "");
+				}
 
 				if (fileinfo.attrib & 16) {
 					strct->repFileName = some_name;
@@ -48,13 +58,7 @@ void Searching(MyStruct* strct) {
 					ReleaseMutex(strct->mutexWriter);
 					ReleaseMutex(strct->mutexReader);
 
-					strct->counter++;
 					Searching(strct);
-					strct->counterResult = 100 / strct->counter;
-					strct->counter--;
-
-					counter = to_wstring(strct->counterResult) + L'%';
-					strct->window->SetProgress(counter);
 
 					strct->repFileName = some_name;
 					strct->path.replace(strct->path.find(strct->repFileName + "\\"), strct->repFileName.length() + 1, "");
@@ -69,6 +73,11 @@ void Searching(MyStruct* strct) {
 
 					SetEvent(strct->hEvent);
 				}
+
+				strct->counterResult = 100 / strct->counter;
+				strct->counter--;
+				counter = to_wstring(strct->counterResult) + L'%';
+				strct->window->SetProgress(counter);
 			}
 		}
 

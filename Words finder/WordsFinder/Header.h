@@ -5,9 +5,11 @@
 #include <vector>
 #include <regex>
 #include <io.h>
+#include <exception> 
 using namespace std;
 
 #include "resource.h"
+#include "NotAllowFile.h"
 
 #include "Windows.h"
 #include "WorkWithFile.h"
