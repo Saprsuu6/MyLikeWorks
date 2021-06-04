@@ -7,7 +7,7 @@ private:
 	ifstream out;
 public:
 	string Read(const string& path);
-	void Write(const string& path, const string& txt);
+	void Write(const string& path, const string& txt, const bool temp);
 };
 
 inline string WorkWithFile::Read(const string& path)
@@ -24,9 +24,10 @@ inline string WorkWithFile::Read(const string& path)
 	return temp;
 }
 
-inline void WorkWithFile::Write(const string& path, const string& txt)
+inline void WorkWithFile::Write(const string& path, const string& txt, const bool temp)
 {
-	in.open(path, ios::app);
+	if (temp) { in.open(path, ios::app); }
+	else { in.open(path, ios::out); }
 
 	if (in.is_open()) {
 		in << txt;

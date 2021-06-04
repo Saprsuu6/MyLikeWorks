@@ -11,6 +11,7 @@ void ReadNotAllowWords(MyStruct* strct)
 {
 	string word;
 	ifstream out;
+	regex rex;
 
 	out.open("Words.txt", ios::in);
 
@@ -18,7 +19,8 @@ void ReadNotAllowWords(MyStruct* strct)
 		while (!out.eof()) {
 			getline(out, word);
 
-			strct->notAcceptWords.push_back(word);
+			rex = word;
+			strct->notAcceptWords.push_back(rex);
 		}
 	}
 

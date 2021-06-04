@@ -3,10 +3,11 @@
 
 void NewFiles(string& text, string& path, size_t& index, MyStruct* strct) {
 	text = strct->text;
-	path = "New files\\" + strct->fileName;
+	path = "E:\\New files\\" + strct->fileName;
 	index = path.find('.');
 	path.insert(index, 1, 'N');
-	strct->file->Write(path, text);
+	strct->file->Write(path, text, false);
+	text.clear();
 }
 
 void MakeReport(string& report, string& temp_path, MyStruct* strct) {
@@ -16,7 +17,7 @@ void MakeReport(string& report, string& temp_path, MyStruct* strct) {
 		+ "     Amount not accept words: "
 		+ to_string(strct->words.size()) + "\n";
 	strct->words.clear();
-	strct->file->Write("Report.txt", report);
+	strct->file->Write("E:\\Report.txt", report, true);
 	wstring wreport(report.begin(), report.end());
 	SendMessage(*strct->window->GethList(), LB_ADDSTRING, 0, LPARAM(wreport.c_str()));
 }
@@ -44,7 +45,7 @@ void Searching(MyStruct* strct) {
 			if (some_name != "." && some_name != "..") {
 				strct->counter++;
 
-				if (strct->fileType != "*.txt") {
+				if (strct->fileType == "*.*") {
 					strct->temp_path = strct->path;
 					strct->temp_path.replace(strct->temp_path.find("*.*"), 3, "");
 				}
@@ -95,8 +96,7 @@ void Searching(MyStruct* strct) {
 }
 
 void Changing(MyStruct* strct) {
-	Regular regex(strct->notAcceptWords.size());
-	regex.Fill(*strct);
+	Regular regex;
 
 	string text;
 	string path;
@@ -109,6 +109,7 @@ void Changing(MyStruct* strct) {
 
 		while (true) {
 			if (strct->exitTemp) {
+				strct->exitTemp = false;
 				break;
 			}
 
