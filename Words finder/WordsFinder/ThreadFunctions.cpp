@@ -10,6 +10,12 @@ void NewFiles(string& text, string& path, size_t& index, MyStruct* strct) {
 	text.clear();
 }
 
+void WriteReport(string& report, MyStruct* strct) {
+	strct->file->Write("E:\\Report.txt", report, true);
+	wstring wreport(report.begin(), report.end());
+	SendMessage(*strct->window->GethList(), LB_ADDSTRING, 0, LPARAM(wreport.c_str()));
+}
+
 void MakeReport(string& report, string& temp_path, MyStruct* strct) {
 	report = "Path: " + temp_path
 		+ "     Size: " + to_string(strct->size)
@@ -17,9 +23,27 @@ void MakeReport(string& report, string& temp_path, MyStruct* strct) {
 		+ "     Amount not accept words: "
 		+ to_string(strct->words.size()) + "\n";
 	strct->words.clear();
-	strct->file->Write("E:\\Report.txt", report, true);
-	wstring wreport(report.begin(), report.end());
-	SendMessage(*strct->window->GethList(), LB_ADDSTRING, 0, LPARAM(wreport.c_str()));
+	WriteReport(report, strct);
+}
+
+void Sorting(MyStruct* strct) {
+	sort(strct->allWords.begin(), strct->allWords.end());
+	strct->allWords.erase(unique(strct->allWords.begin(), strct->allWords.end()), strct->allWords.end());
+	reverse(strct->allWords.begin(), strct->allWords.end());
+}
+
+void Top10(MyStruct* strct) {
+	string top10 = "Top 10 not allow words: ";
+	size_t size = strct->allWords.size();
+
+	if (size > 10) { size = 10; }
+
+	for (size_t i = 0; i < size; i++) {
+		top10 += strct->allWords[i] + " ";
+	}
+
+	strct->allWords.clear();
+	WriteReport(top10, strct);
 }
 
 void Searching(MyStruct* strct) {	
@@ -129,6 +153,9 @@ void Changing(MyStruct* strct) {
 			ReleaseMutex(strct->mutexReader);
 		}
 	}
+
+	Sorting(strct);
+	Top10(strct);
 
 	strct->window->FinishWork();
 }

@@ -8,6 +8,7 @@ public:
 
 inline void Regular::Cheking(string& text, MyStruct& strct)
 {
+	string origWord;
 	string temp;
 	size_t position = 0;
 	size_t size = 0;
@@ -22,6 +23,8 @@ inline void Regular::Cheking(string& text, MyStruct& strct)
 			size = i->length() + position;
 
 			for (size_t j = position; j < size; j++) {
+				origWord.push_back(text[j]);
+
 				if (text[j] != '-' && text[j] != '+' && text[j] != '(' && text[j] != ')'
 					&& text[j] != '*' && text[j] != '@') {
 
@@ -30,6 +33,7 @@ inline void Regular::Cheking(string& text, MyStruct& strct)
 				temp += text[j];
 			}
 
+			strct.allWords.push_back(origWord);
 			strct.words.push_back(temp);
 			temp.clear();
 		}

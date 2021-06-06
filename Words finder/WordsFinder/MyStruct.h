@@ -14,6 +14,7 @@ struct MyStruct {
 	string fileType;
 	vector<regex> notAcceptWords;
 	vector<string> words;
+	vector<string> allWords;
 	WorkWithFile* file = nullptr;
 	Windows* window = nullptr;
 

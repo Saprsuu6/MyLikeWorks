@@ -6,6 +6,7 @@
 #include <regex>
 #include <io.h>
 #include <exception> 
+#include <algorithm>
 using namespace std;
 
 #include "resource.h"
