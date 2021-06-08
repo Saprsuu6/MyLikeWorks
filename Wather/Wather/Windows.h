@@ -7,17 +7,16 @@ private:
 	HWND hTown;
 	HWND hSendTown;
 	HWND hWather;
-	HWND hFindWather;
+	HWND hPictureControl;
 public:
 	void SetDiscriptors(const HWND& hwnd);
 	const HWND* GethDialog() const;
 	const HWND* GethTown() const;
 	const HWND* GethSendTown() const;
 	const HWND* GethWather() const;
-	const HWND* GethFindWather() const;
+	const HWND* GethPictureControl() const;
 
 	void EnableDisableSend() const;
-	void EnableDisableFindWather(const bool temp) const;
 };
 
 inline void Windows::SetDiscriptors(const HWND& hwnd)
@@ -26,7 +25,7 @@ inline void Windows::SetDiscriptors(const HWND& hwnd)
 	hTown = GetDlgItem(hwnd, IDC_TOWN);
 	hSendTown = GetDlgItem(hwnd, IDC_SEND_TOWN);
 	hWather = GetDlgItem(hwnd, IDC_WATHER);
-	hFindWather = GetDlgItem(hwnd, IDC_FIND_WATHER);
+	hPictureControl = GetDlgItem(hwnd, IDC_PICTURECONTROL);
 }
 
 inline const HWND* Windows::GethDialog() const
@@ -49,9 +48,9 @@ inline const HWND* Windows::GethWather() const
 	return &hWather;
 }
 
-inline const HWND* Windows::GethFindWather() const
+inline const HWND* Windows::GethPictureControl() const
 {
-	return &hFindWather;
+	return &hPictureControl;
 }
 
 inline void Windows::EnableDisableSend() const
@@ -64,9 +63,4 @@ inline void Windows::EnableDisableSend() const
 	else {
 		EnableWindow(hSendTown, FALSE);
 	}
-}
-
-inline void Windows::EnableDisableFindWather(const bool temp) const
-{
-	EnableWindow(hFindWather, temp);
 }

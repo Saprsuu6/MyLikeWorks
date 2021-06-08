@@ -44,4 +44,60 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="01d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="01n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="02d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="02n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="03d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="03n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="04d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="04n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="09d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="09n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="10d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="10n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="11d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="11n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="13d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="13n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="50d.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="50n.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

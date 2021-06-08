@@ -50,7 +50,7 @@ END
 // Dialog
 //
 
-IDD_DIALOG1 DIALOGEX 0, 0, 173, 167
+IDD_DIALOG1 DIALOGEX 0, 0, 305, 147
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Wather"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
@@ -58,9 +58,8 @@ BEGIN
     LTEXT           "Town:",IDC_STATIC,7,7,21,8
     EDITTEXT        IDC_TOWN,7,18,99,14,ES_AUTOHSCROLL
     PUSHBUTTON      "Ok",IDC_SEND_TOWN,115,18,50,14
-    EDITTEXT        IDC_WATHER,7,47,159,93,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_WATHER,7,47,157,93,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
     LTEXT           "Wather:",IDC_STATIC,7,36,28,8
-    PUSHBUTTON      "Find wather",IDC_FIND_WATHER,5,146,160,14
 END
 
 
@@ -75,9 +74,9 @@ BEGIN
     IDD_DIALOG1, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 166
+        RIGHTMARGIN, 298
         TOPMARGIN, 7
-        BOTTOMMARGIN, 160
+        BOTTOMMARGIN, 140
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -92,6 +91,48 @@ IDD_DIALOG1 AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP2             BITMAP                  "01d.bmp"
+
+IDB_BITMAP3             BITMAP                  "01n.bmp"
+
+IDB_BITMAP4             BITMAP                  "02d.bmp"
+
+IDB_BITMAP5             BITMAP                  "02n.bmp"
+
+IDB_BITMAP6             BITMAP                  "03d.bmp"
+
+IDB_BITMAP7             BITMAP                  "03n.bmp"
+
+IDB_BITMAP8             BITMAP                  "04d.bmp"
+
+IDB_BITMAP9             BITMAP                  "04n.bmp"
+
+IDB_BITMAP10            BITMAP                  "09d.bmp"
+
+IDB_BITMAP11            BITMAP                  "09n.bmp"
+
+IDB_BITMAP12            BITMAP                  "10d.bmp"
+
+IDB_BITMAP13            BITMAP                  "10n.bmp"
+
+IDB_BITMAP14            BITMAP                  "11d.bmp"
+
+IDB_BITMAP15            BITMAP                  "11n.bmp"
+
+IDB_BITMAP16            BITMAP                  "13d.bmp"
+
+IDB_BITMAP17            BITMAP                  "13n.bmp"
+
+IDB_BITMAP18            BITMAP                  "50d.bmp"
+
+IDB_BITMAP19            BITMAP                  "50n.bmp"
 
 #endif    // Russian (Russia) resources
 /////////////////////////////////////////////////////////////////////////////

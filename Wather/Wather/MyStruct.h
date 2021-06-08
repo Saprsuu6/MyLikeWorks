@@ -4,6 +4,10 @@ struct MyStruct
 {
 	TcpClient client;
 	Windows* window = nullptr;
+	HWND hStaticImage;
+	HINSTANCE hInstance;
+	HBITMAP hBitmap;
+	map<string, HBITMAP> tree;
 
 	wstring GetInfo(const string& key_word, const string& json) {
 		size_t size_key_word = key_word.length() + 2;

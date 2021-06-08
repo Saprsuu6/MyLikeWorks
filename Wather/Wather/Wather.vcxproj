@@ -152,6 +152,26 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="01d.bmp" />
+    <Image Include="01n.bmp" />
+    <Image Include="02d.bmp" />
+    <Image Include="02n.bmp" />
+    <Image Include="03d.bmp" />
+    <Image Include="03n.bmp" />
+    <Image Include="04d.bmp" />
+    <Image Include="04n.bmp" />
+    <Image Include="09d.bmp" />
+    <Image Include="09n.bmp" />
+    <Image Include="10d.bmp" />
+    <Image Include="10n.bmp" />
+    <Image Include="11d.bmp" />
+    <Image Include="11n.bmp" />
+    <Image Include="13d.bmp" />
+    <Image Include="13n.bmp" />
+    <Image Include="50d.bmp" />
+    <Image Include="50n.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

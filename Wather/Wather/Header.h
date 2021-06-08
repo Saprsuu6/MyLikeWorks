@@ -1,11 +1,12 @@
 #pragma once
 
-#pragma comment(lib, "../x64/Debug/TcpSockets")
+#pragma comment(lib, "../Debug/TcpSockets")
 #include "../TcpSockets/Header.h"
 
 #include <Windows.h>
 #include <string>
 #include <fstream>
+#include <map>
 using namespace std;
 
 #include "resource.h"
